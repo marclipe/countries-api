@@ -33,4 +33,14 @@ To undo the migrations, run the command below:
 `knex seed:run --specific=<file_name>`
 
 
-()[https://blog.openreplay.com/creating-a-nodejs-api-with-knex-and-mysql/]
+(Inspiration)[https://blog.openreplay.com/creating-a-nodejs-api-with-knex-and-mysql/]
+
+### CORS
+- `npm install cors`
+- Add following lines to your server.js or index.js
+
+```
+  const cors = require('cors')
+
+  app.use(cors()) // Use this after the variable declaration
+```
