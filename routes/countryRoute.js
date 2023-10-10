@@ -1,6 +1,7 @@
 const express = require("express"); 
 const router = express.Router();
-const db = require('../db/db.js'); 
+const db = require('../db/db.js');
+const { v4: uuid4 } = require("uuid");
 
 router.get("/countries", async(request, response) => {
   try {
@@ -21,6 +22,16 @@ router.post("/countries", async (request, response) => {
       population,
       flag
     })
+
+    let sessionId = request.cookies
+    if (!sessionId) {
+      sessionId = uuid4()
+
+      response.cookie('sessionId', sessionId, {
+        path: '/',
+        maxAge: 1000 * 60 * 60 * 24 * 7, //7 days
+      })
+    }
 
     if(result.length > 0) {
       response.status(201).json({ message: "Country added successfully" })

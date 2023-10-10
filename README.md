@@ -44,3 +44,16 @@ To undo the migrations, run the command below:
 
   app.use(cors()) // Use this after the variable declaration
 ```
+
+### Cookies
+
+`npm install cookie-parser`
+
+```
+  const cookieParser = require('cookie-parser')
+  // let’s you use the cookieParser in your application
+  app.use(cookieParser());
+```
+### uuid
+
+`npm install uuid`
